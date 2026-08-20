@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ajay Girwal - Login & Banking Test</title>
+
+<style>
+
+/* =========================
+   COMMON CSS
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Verdana, sans-serif;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    min-height: 100vh;
+}
+
+.page {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    width: 380px;
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.login-box h1 {
+    text-align: center;
+    color: #0072ff;
+}
+
+.login-box p {
+    text-align: center;
+    color: #555;
+}
+
+.login-box label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 13px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 7px;
+    background: #0072ff;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #0056c7;
+}
+
+#loginMessage {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.demo {
+    margin-top: 20px;
+    padding: 12px;
+    background: #f2f2f2;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+
+/* =========================
+   FORM PAGE
+========================= */
+
+.form-page {
+    background: lightyellow;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.payment {
+    background-color: lightseagreen;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.payment h1 {
+    color: red;
+    margin: 5px;
+}
+
+.D {
+    color: white;
+    font-weight: bold;
+}
+
+h2 {
+    color: #d00000;
+}
+
+hr {
+    border: 1px solid #ccc;
+}
+
+.form-page label {
+    font-weight: bold;
+}
+
+.form-page input[type="text"],
+.form-page input[type="email"],
+.form-page input[type="tel"],
+.form-page input[type="password"],
+.form-page input[type="number"],
+.form-page select,
+.form-page textarea {
+
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+fieldset {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.radio {
+    width: auto !important;
+}
+
+.payment-info {
+    background-color: aqua;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.pay-btn {
+    background-color: #00d9ff;
+    color: red;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.contact {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: green;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   BANKING TEST
+========================= */
+
+.test-page {
+    min-height: 100vh;
+    background: #eef3f8;
+    padding-bottom: 40px;
+}
+
+.test-header {
+    background: #0066cc;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.test-box {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.question {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f7f7f7;
+    border-radius: 8px;
+}
+
+.question h3 {
+    color: #222;
+}
+
+.option {
+    display: block;
+    padding: 10px;
+    margin: 8px 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #eaf4ff;
+}
+
+.option input {
+    margin-right: 10px;
+}
+
+.test-submit {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    background: green;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logout-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     LOGIN PAGE
+================================================== -->
+
+<div id="loginPage" class="page active login-page">
+
+    <div class="login-box">
+
+        <h1>🔐 Login</h1>
+
+        <p>
+            Ajay Girwal Computer International
+        </p>
+
+        <form id="loginForm">
+
+            <label>
+                Username
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter Username"
+                required
+            >
+
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                Login
+            </button>
+
+        </form>
+
+
+        <div id="loginMessage"></div>
+
+
+        <div class="demo">
+
+            <b>Demo Login</b>
+
+            <br><br>
+
+            Username:
+            <b>Ajay</b>
+
+            <br>
+
+            Password:
+            <b>12345</b>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     FORM PAGE
+================================================== -->
+
+<div id="formPage" class="page form-page">
+
+    <div class="container">
+
+        <button
+            class="logout-btn"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+
+
+        <div class="payment">
+
+            <h1>
+                Document Form Apply
+            </h1>
+
+            <p class="D">
+                Mobile Smart Network India Is Best City
+                Technology For Electronic Software
+            </p>
+
+            <p>
+                MP State
+            </p>
+
+        </div>
+
+
+        <h2>
+            Payment Form
+        </h2>
+
+        <hr>
+
+
+        <h2>
+            Contact Information
+        </h2>
+
+
+        <form id="documentForm">
+
+
+            <p>
+
+                <label>
+                    Name:-
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Type Your Name"
+                    required
+                >
+
+            </p>
+
+
+            <p>
+
+                <label>
+                    Father's Name:-
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Type Father's Name"
+                    required
+                >
+
+            </p>
+
+
+            <p>
+
+                <label>
+                    Mother's Name:-
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Type Mother's Name"
+                    required
+                >
+
+            </p>
+
+
+            <fieldset>
+
+                <legend>
+                    Gender
+                </legend>
+
+
+                <label>
+
+                    <input
+                        class="radio"
+                        type="radio"
+                        name="gender"
+                        required
+                    >
+
+                    Male
+
+                </label>
+
+
+                &nbsp;&nbsp;
+
+
+                <label>
+
+                    <input
+                        class="radio"
+                        type="radio"
+                        name="gender"
+                    >
+
+                    Female
+
+                </label>
+
+            </fieldset>
+
+
+            <p>
+
+                <label>
+                    Address:-
+                </label>
+
+                <textarea
+                    rows="5"
+                    placeholder="Enter Your Address"
+                    required
+                ></textarea>
+
+            </p>
+
+
+            <p>
+
+                <label>
+                    Mobile Number:-
+                </label>
+
+                <input
+                    type="tel"
+                    placeholder="Enter Mobile Number"
+                    maxlength="10"
+                    required
+                >
+
+            </p>
+
+
+            <p>
+
+                <label>
+                    Email:
+                </label>
+
+                <input
+                    type="email"
+                    placeholder="Enter Your Email"
+                    required
+                >
+
+            </p>
+
+
+            <p>
+
+                <label>
+                    Password For Email:-
+                </label>
+
+                <input
+                    type="password"
+                    placeholder="Type Your Password"
+                >
+
+            </p>
+
+
+            <p>
+
+                <label>
+                    Pincode:-
+                </label>
+
+                <input
+                    type="number"
+                    placeholder="Type Pincode"
+                    required
+                >
+
+            </p>
+
+
+            <h2>
+                Payment Information
+            </h2>
+
+
+            <div class="payment-info">
+
+                <label>
+                    Select Your Card:-
+                </label>
+
+
+                <select required>
+
+                    <option value="">
+                        -- Select Card --
+                    </option>
+
+                    <option>
+                        Item Card
+                    </option>
+
+                    <option>
+                        Aadhar Card
+                    </option>
+
+                    <option>
+                        PAN Card
+                    </option>
+
+                    <option>
+                        Bank Passbook
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="button"
+                    class="pay-btn"
+                    onclick="paymentMessage()"
+                >
+                    💳 Pay Now
+                </button>
+
+            </div>
+
+
+            <div class="contact">
+
+                <h2>
+                    📞 Contact Me
+                </h2>
+
+
+                <input
+                    type="text"
+                    placeholder="Your Name"
+                >
+
+                <br><br>
+
+
+                <input
+                    type="email"
+                    placeholder="Your Email"
+                >
+
+                <br><br>
+
+
+                <textarea
+                    rows="5"
+                    placeholder="Your Message"
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="submit-btn"
+            >
+                🚀 Submit & Start Banking Test
+            </button>
+
+
+        </form>
+
+
+        <footer>
+
+            © 2026 Ajay Girwal Computer International |
+            All Rights Reserved
+
+        </footer>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     BANKING TEST PAGE
+================================================== -->
+
+<div id="testPage" class="page test-page">
+
+
+    <div class="test-header">
+
+        <h1>
+            🏦 Banking Exam Test
+        </h1>
+
+        <p>
+            IBPS / Banking Practice Test
+        </p>
+
+    </div>
+
+
+    <div class="test-box">
+
+
+        <form id="quizForm">
+
+
+            <!-- QUESTION 1 -->
+
+            <div class="question">
+
+                <h3>
+                    1. भारत का केंद्रीय बैंक कौन सा है?
+                </h3>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="wrong"
+                        required
+                    >
+
+                    SBI
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="correct"
+                    >
+
+                    RBI
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="wrong"
+                    >
+
+                    PNB
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="wrong"
+                    >
+
+                    NABARD
+
+                </label>
+
+            </div>
+
+
+
+            <!-- QUESTION 2 -->
+
+            <div class="question">
+
+                <h3>
+                    2. SBI का पूरा नाम क्या है?
+                </h3>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="correct"
+                        required
+                    >
+
+                    State Bank of India
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="wrong"
+                    >
+
+                    State Banking India
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="wrong"
+                    >
+
+                    State Bank International
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="wrong"
+                    >
+
+                    State Banking Institution
+
+                </label>
+
+            </div>
+
+
+
+            <!-- QUESTION 3 -->
+
+            <div class="question">
+
+                <h3>
+                    3. RBI का मुख्यालय कहाँ है?
+                </h3>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="correct"
+                        required
+                    >
+
+                    Mumbai
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="wrong"
+                    >
+
+                    Delhi
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="wrong"
+                    >
+
+                    Bhopal
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="wrong"
+                    >
+
+                    Indore
+
+                </label>
+
+            </div>
+
+
+
+            <!-- QUESTION 4 -->
+
+            <div class="question">
+
+                <h3>
+                    4. ATM का पूरा नाम क्या है?
+                </h3>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="wrong"
+                        required
+                    >
+
+                    Any Time Money
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="correct"
+                    >
+
+                    Automated Teller Machine
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="wrong"
+                    >
+
+                    Automatic Transfer Money
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="wrong"
+                    >
+
+                    All Time Machine
+
+                </label>
+
+            </div>
+
+
+
+            <!-- QUESTION 5 -->
+
+            <div class="question">
+
+                <h3>
+                    5. भारत में मुद्रा जारी करने का मुख्य अधिकार किसके पास है?
+                </h3>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="correct"
+                        required
+                    >
+
+                    RBI
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="wrong"
+                    >
+
+                    SBI
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="wrong"
+                    >
+
+                    Finance Commission
+
+                </label>
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="wrong"
+                    >
+
+                    SEBI
+
+                </label>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="test-submit"
+            >
+                ✅ Submit Test
+            </button>
+
+
+        </form>
+
+
+        <div id="result"></div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+
+/* =========================
+   LOGIN
+========================= */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    let username =
+        document.getElementById("username").value.trim();
+
+
+    let password =
+        document.getElementById("password").value;
+
+
+    let message =
+        document.getElementById("loginMessage");
+
+
+    /*
+       Demo Username:
+       Ajay
+
+       Demo Password:
+       12345
+    */
+
+    if (
+        username === "Ajay" &&
+        password === "12345"
+    ) {
+
+        message.style.color = "green";
+
+        message.innerHTML =
+            "✅ Login Successful!";
+
+
+        setTimeout(function() {
+
+            document
+            .getElementById("loginPage")
+            .classList.remove("active");
+
+
+            document
+            .getElementById("formPage")
+            .classList.add("active");
+
+
+        }, 800);
+
+
+    } else {
+
+        message.style.color = "red";
+
+        message.innerHTML =
+            "❌ Username या Password गलत है!";
+
+    }
+
+});
+
+
+
+/* =========================
+   PAYMENT BUTTON
+========================= */
+
+function paymentMessage() {
+
+    alert(
+        "💳 Payment Section Ready!\n\n" +
+        "यह Demo Payment Button है."
+    );
+
+}
+
+
+
+/* =========================
+   FORM SUBMIT
+========================= */
+
+document
+.getElementById("documentForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    alert(
+        "✅ Form Successfully Submitted!\n\n" +
+        "अब Banking Exam Test शुरू होगा."
+    );
+
+
+    document
+    .getElementById("formPage")
+    .classList.remove("active");
+
+
+    document
+    .getElementById("testPage")
+    .classList.add("active");
+
+
+    window.scrollTo(0, 0);
+
+});
+
+
+
+/* =========================
+   BANKING TEST
+========================= */
+
+document
+.getElementById("quizForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    let score = 0;
+
+    let totalQuestions = 5;
+
+
+    for (
+        let i = 1;
+        i <= totalQuestions;
+        i++
+    ) {
+
+
+        let answer =
+            document.querySelector(
+                'input[name="q' + i + '"]:checked'
+            );
+
+
+        if (
+            answer &&
+            answer.value === "correct"
+        ) {
+
+            score++;
+
+        }
+
+    }
+
+
+    let percentage =
+        (score / totalQuestions) * 100;
+
+
+    document
+    .getElementById("result")
+    .innerHTML =
+
+        "🎉 Test Complete!<br><br>" +
+
+        "Your Score: " +
+        score +
+        " / " +
+        totalQuestions +
+
+        "<br><br>" +
+
+        "Percentage: " +
+        percentage +
+        "%";
+
+
+});
+
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+
+    document
+    .getElementById("formPage")
+    .classList.remove("active");
+
+
+    document
+    .getElementById("testPage")
+    .classList.remove("active");
+
+
+    document
+    .getElementById("loginPage")
+    .classList.add("active");
+
+
+    document
+    .getElementById("loginForm")
+    .reset();
+
+
+    document
+    .getElementById("loginMessage")
+    .innerHTML = "";
+
+}
+
+</script>
+
+
+</body>
+</html>
